@@ -1,3 +1,12 @@
+:root {
+  --primary-icon-color-filter: brightness(0) saturate(100%) invert(74%)
+    sepia(81%) saturate(4%) hue-rotate(22deg) brightness(98%) contrast(83%);
+
+  --secondary-color: #54378f;
+  --secodary-color-filter: brightness(0) saturate(100%) invert(25%) sepia(36%)
+    saturate(1544%) hue-rotate(226deg) brightness(94%) contrast(97%);
+}
+
 body {
   width: 100%;
 
@@ -23,22 +32,27 @@ img {
 .navbar {
   width: inherit;
   height: 100px;
+  margin-bottom: 2.5rem;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  border-bottom: 2px solid gray ;
+  border-bottom: 2px solid gray;
 
   .logo {
     display: flex;
     align-items: center;
   }
 
+  .app-name {
+    color: var(--secondary-color);
+  }
+
   .logo img {
     width: 80px;
-    filter: brightness(0) saturate(100%) invert(9%) sepia(66%) saturate(7496%)
-      hue-rotate(252deg) brightness(60%) contrast(115%);    
+    filter: brightness(0) saturate(100%) invert(10%) sepia(93%) saturate(3055%)
+      hue-rotate(221deg) brightness(104%) contrast(144%);
   }
 }
 
@@ -58,13 +72,16 @@ img {
   h3 {
     font-weight: 400;
   }
+
+  li:first-child img {
+    filter: var(--secodary-color-filter);
+  }
 }
 
 .nav-items li img,
 .profile-container img {
   width: 1.5rem;
-  filter: brightness(0) saturate(100%) invert(74%) sepia(81%) saturate(4%)
-    hue-rotate(22deg) brightness(98%) contrast(83%);
+  filter: var(--primary-icon-color-filter);
 }
 
 .profile-container {
@@ -78,5 +95,131 @@ img {
     background-color: grey;
 
     border-radius: 8px;
+  }
+}
+
+.background-box {
+  width: 32vw;
+  height: 57vh;
+
+  position: absolute;
+  z-index: -1;
+
+  background-color: rgb(210, 236, 255);
+
+  border-bottom-right-radius: 36px;
+}
+
+/* Main content */
+
+main {
+  display: grid;
+  grid-template-columns:
+    minmax(300px, 1fr)
+    minmax(300px, 1fr) minmax(300px, 1fr);
+
+  margin-top: 3 rem;
+}
+
+.col-one {
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+}
+
+.col-one .greeting-container {
+  display: flex;
+  gap: 1rem;
+
+  width: 400px;
+
+  img {
+    filter: var(--secodary-color-filter);
+    height: 3rem;
+  }
+}
+
+.percentage-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 3rem;
+
+  p:first-child {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    color: var(--secondary-color);
+
+    font-size: 3rem;
+    font-weight: 600;
+  }
+
+  #task-percentage {
+    font-size: 7rem;
+    color: var(--secondary-color);
+    font-weight: 600;
+  }
+}
+
+.percentage-container .task-count-container {
+  display: flex;
+  flex-direction: column;
+
+  background-color: white;
+
+  height: 9rem;
+  width: 15rem;
+  padding: 1rem 1.5rem;
+
+  border-radius: 26px;
+  box-shadow: 0px 0px 40px 12px rgba(0,0,0,0.1);
+
+  h3 {
+    color: gray;
+  }
+
+  p {
+    font-size: 3rem;
+    font-weight: 600;
+  }
+}
+
+.task-card-container {
+  display: grid;
+  grid-template-rows: 120px 120px;
+  grid-template-columns: 205px 205px;
+
+  gap: 1rem;
+
+  div {
+    border-radius: 16px;
+
+    padding: 1rem 2rem;
+
+    color: #fff;
+
+    span {
+      font-size: 3rem;
+      font-weight: 500;
+    }
+  }
+
+  .past-due-card {
+    background-color: rgb(255, 89, 139);
+  }
+
+  .today-due-card {
+    background-color: var(--secondary-color);
+  }
+
+  .incoming-due-card {
+    background-color: rgb(255, 189, 89);
+  }
+
+  .empty-card {
+    background-color: rgb(238, 238, 238);
   }
 }
