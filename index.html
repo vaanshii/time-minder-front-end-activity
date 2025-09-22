@@ -10,7 +10,7 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
-    />  
+    />
     <script src="script.js"></script>
     <title>TimeMinder</title>
   </head>
@@ -47,6 +47,59 @@
           <div class="profile-image"></div>
         </div>
       </nav>
+
+      <main>
+        <section class="col-one">
+          <div class="background-box"></div>
+          <div class="greeting-container">
+            <img src="/assets/icons/weather-icon.svg" alt="Weather" />
+            <p class="greeting-msg">
+              Good morning <span id="user">John!</span>
+              Rise and and shine, ready to tackle the day ahead with enthausaism
+              and positivity?
+            </p>
+          </div>
+
+          <div class="completion-container">
+            <div class="percentage">
+              <p><span id="task-percentage">0</span>%</p>
+
+              <div class="task-count-container">
+                <h4>TASK COMPLETED</h4>
+                <p>
+                  <span id="completed-task">0</span>/<span id="total-tasks"
+                    >0</span
+                  >
+                </p>
+                // TODO: add progress bar
+              </div>
+
+              <div class="task-card-container">
+                <div class="past-due-card">
+                  <h3>PAST DUES</h3>
+                  <span id="past-due-count">0</span>
+                </div>
+
+                <div class="today-due-card">
+                  <h3>TODAY</h3>
+                  <span id="today-due-count">0</span>
+                </div>
+
+                <div class="incoming-due-card">
+                  <h3>INCOMING</h3>
+                  <span id="incoming-due-count">0</span>
+                </div>
+
+                <div class="empty-card"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="col-two"></section>
+
+        <section class="col-three"></section>
+      </main>
     </div>
   </body>
 </html>
