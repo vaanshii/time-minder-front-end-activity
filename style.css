@@ -1,0 +1,82 @@
+body {
+  width: 100%;
+
+  font-family: "Roboto", sans-serif;
+}
+
+.wrapper {
+  width: inherit;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+img {
+  width: 100px;
+}
+
+.navbar {
+  width: inherit;
+  height: 100px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-bottom: 2px solid gray ;
+
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo img {
+    width: 80px;
+    filter: brightness(0) saturate(100%) invert(9%) sepia(66%) saturate(7496%)
+      hue-rotate(252deg) brightness(60%) contrast(115%);    
+  }
+}
+
+.nav-items {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+
+  display: flex;
+  gap: 3rem;
+
+  li {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  h3 {
+    font-weight: 400;
+  }
+}
+
+.nav-items li img,
+.profile-container img {
+  width: 1.5rem;
+  filter: brightness(0) saturate(100%) invert(74%) sepia(81%) saturate(4%)
+    hue-rotate(22deg) brightness(98%) contrast(83%);
+}
+
+.profile-container {
+  display: flex;
+  gap: 1.5rem;
+
+  .profile-image {
+    width: 2.5rem;
+    height: 2.5rem;
+
+    background-color: grey;
+
+    border-radius: 8px;
+  }
+}
