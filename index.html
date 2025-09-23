@@ -1,104 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css-reset.css" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <script src="script.js"></script>
-    <title>TimeMinder</title>
-  </head>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css-reset.css" />
+		<link rel="stylesheet" href="style.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+			rel="stylesheet"
+		/>
+		<script src="script.js"></script>
+		<title>TimeMinder</title>
+	</head>
 
-  <body>
-    <div class="background-box"></div>
-    <div class="wrapper">
-      <nav class="navbar">
-        <div class="logo">
-          <img src="/assets/logo/logo.svg" alt="Logo" />
-          <h1 class="app-name">TimeMinder</h1>
-        </div>
+	<body>
+		<div class="background-box"></div>
+		<div class="wrapper">
+			<nav class="navbar">
+				<div class="logo">
+					<img
+						src="/time-minder-front-end-activity/assets/logo/logo.svg"
+						alt="Logo"
+					/>
+					<h1 class="app-name">TimeMinder</h1>
+				</div>
 
-        <ul class="nav-items">
-          <li>
-            <img src="/assets/icons/overview-icon.svg" alt="Overview" />
-            <h3>Overview</h3>
-          </li>
-          <li>
-            <img src="/assets/icons/calendar-icon.svg" alt="Calendar" />
-            <h3>Calendar</h3>
-          </li>
-          <li>
-            <img src="/assets/icons/habits-icon.svg" alt="Habits" />
-            <h3>Habits</h3>
-          </li>
-          <li>
-            <img src="/assets/icons/list-icon.svg" alt="List" />
-            <h3>List</h3>
-          </li>
-        </ul>
+				<ul class="nav-items">
+					<li>
+						<img src="/assets/icons/overview-icon.svg" alt="Overview" />
+						<h3>Overview</h3>
+					</li>
+					<li>
+						<img src="/assets/icons/calendar-icon.svg" alt="Calendar" />
+						<h3>Calendar</h3>
+					</li>
+					<li>
+						<img src="/assets/icons/habits-icon.svg" alt="Habits" />
+						<h3>Habits</h3>
+					</li>
+					<li>
+						<img src="/assets/icons/list-icon.svg" alt="List" />
+						<h3>List</h3>
+					</li>
+				</ul>
 
-        <div class="profile-container">
-          <img src="/assets/icons/settings-icon.svg" alt="Settings" />
-          <div class="profile-image"></div>
-        </div>
-      </nav>
+				<div class="profile-container">
+					<img src="/assets/icons/settings-icon.svg" alt="Settings" />
+					<div class="profile-image"></div>
+				</div>
+			</nav>
 
-      <main>
-        <section class="col-one">
-          <div>
-            <div class="greeting-container">
-              <img src="/assets/icons/weather-icon.svg" alt="Weather" />
-              <p class="greeting-msg">
-                Good morning <span id="user">John!</span>
-                Rise and and shine, ready to tackle the day ahead with
-                enthausaism and positivity?
-              </p>
-            </div>
+			<main>
+				<section class="col-one">
+					<div>
+						<div class="greeting-container">
+							<img src="/assets/icons/weather-icon.svg" alt="Weather" />
+							<p class="greeting-msg">
+								Good morning <span id="user">John!</span>
+								Rise and and shine, ready to tackle the day ahead with
+								enthausaism and positivity?
+							</p>
+						</div>
 
-            <div class="percentage-container">
-              <p><span id="task-percentage">99</span>%</p>
-              <div class="task-count-container">
-                <h3>TASK COMPLETED</h3>
-                <p>
-                  <span id="completed-task">0</span>/<span id="total-tasks"
-                    >0</span
-                  >
-                </p>
-                <!-- TODO: add progress bar -->
-              </div>
-            </div>
-          </div>
+						<div class="percentage-container">
+							<p><span id="task-percentage">99</span>%</p>
+							<div class="task-count-container">
+								<h3>TASK COMPLETED</h3>
+								<p>
+									<span id="completed-task">0</span>/<span id="total-tasks"
+										>0</span
+									>
+								</p>
+								<!-- TODO: add progress bar -->
+							</div>
+						</div>
+					</div>
 
-          <div class="task-card-container">
-            <div class="past-due-card">
-              <h3>PAST DUES</h3>
-              <span id="past-due-count">0</span>
-            </div>
+					<div class="task-card-container">
+						<div class="past-due-card">
+							<h3>PAST DUES</h3>
+							<span id="past-due-count">0</span>
+						</div>
 
-            <div class="today-due-card">
-              <h3>TODAY</h3>
-              <span id="today-due-count">0</span>
-            </div>
+						<div class="today-due-card">
+							<h3>TODAY</h3>
+							<span id="today-due-count">0</span>
+						</div>
 
-            <div class="incoming-due-card">
-              <h3>INCOMING</h3>
-              <span id="incoming-due-count">0</span>
-            </div>
+						<div class="incoming-due-card">
+							<h3>INCOMING</h3>
+							<span id="incoming-due-count">0</span>
+						</div>
 
-            <div class="empty-card"></div>
-          </div>
-        </section>
+						<div class="empty-card"></div>
+					</div>
+				</section>
 
-        <section class="col-two"></section>
+				<section class="col-two"></section>
 
-        <section class="col-three"></section>
-      </main>
-    </div>
-  </body>
+				<section class="col-three"></section>
+			</main>
+		</div>
+	</body>
 </html>
