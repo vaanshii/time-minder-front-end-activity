@@ -100,12 +100,115 @@
 					<div class="tasks-container">
 						<div class="task-tile">
 							<input type="checkbox" id="check-box" />
-							<p class="task-info">[Task here]</p>
+							<p class="task-info">Task here</p>
+						</div>
+						<div class="task-tile">
+							<input type="checkbox" id="check-box" />
+							<p class="task-info">Task here</p>
+						</div>
+						<div class="task-tile">
+							<input type="checkbox" id="check-box" />
+							<p class="task-info">Task here</p>
+						</div>
+						<div class="task-tile">
+							<input type="checkbox" id="check-box" />
+							<p class="task-info">Task here</p>
 						</div>
 					</div>
 				</section>
 
-				<section class="col-three"></section>
+				<section class="col-three">
+					<div class="form-container">
+						<form action="" class="form">
+							<label for="date-deadline">
+								<p>Deadline <span>*</span></p>
+								<input type="datetime-local" id="date-deadline" required />
+							</label>
+
+							<label for="task-title">
+								<p>Title <span>*</span></p>
+								<input
+									type="text"
+									id="task-title"
+									minlength="2"
+									maxlength="30"
+									required
+								/>
+							</label>
+
+							<label for="task-description">
+								<p>Description <span>*</span></p>
+								<textarea
+									name="Description"
+									id="task-description"
+									style="resize: vertical"
+								></textarea>
+							</label>
+
+							<label for="task-type">
+								<p>Type <span>*</span></p>
+								<select name="type" id="task-type" required>
+									<option value="habit" selected>Habit</option>
+									<option value="chores">Chores</option>
+									<option value="school">School</option>
+									<option value="work">Work</option>
+								</select>
+							</label>
+
+							<label for="habit-link">
+								<p>Link a Habit</p>
+								<select name="link" id="habit-link"></select>
+							</label>
+
+							<div class="repeat-day-container">
+								<p>Repeat Every</p>
+								<div class="days-container">
+									<div class="day">
+										<input type="checkbox" name="Sunday" id="sunday" />
+										<label for="sunday">SUN</label>
+									</div>
+
+									<div class="day">
+										<input type="checkbox" name="Monday" id="monday" />
+										<label for="monday">MON</label>
+									</div>
+
+									<div class="day">
+										<input type="checkbox" name="Tuesday" id="tuesday" />
+										<label for="tuesday">TUE</label>
+									</div>
+
+									<div class="day">
+										<input type="checkbox" name="Wednesday" id="wednesday" />
+										<label for="wednesday">WED</label>
+									</div>
+
+									<div class="day">
+										<input type="checkbox" name="Thursday" id="thursday" />
+										<label for="thursday">THU</label>
+									</div>
+
+									<div class="day">
+										<input type="checkbox" name="Friday" id="friday" />
+										<label for="friday">FRI</label>
+									</div>
+
+									<div class="day">
+										<input type="checkbox" name="Saturday" id="saturday" />
+										<label for="saturday">SAT</label>
+									</div>
+								</div>
+							</div>
+
+							<label for="date-until">
+								<p>Until</p>
+								<input type="date" name="Until" id="date-until" />
+							</label>
+
+							<button type="submit">Create Task</button>
+						</form>
+					</div>
+				</section>
 			</main>
 		</div>
 	</body>
