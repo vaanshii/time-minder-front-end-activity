@@ -71,6 +71,7 @@ img {
 
   h3 {
     font-weight: 400;
+    color: gray;
   }
 
   li:first-child img {
@@ -221,5 +222,16 @@ main {
 
   .empty-card {
     background-color: rgb(238, 238, 238);
+  }
+}
+
+.col-two {
+  h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  .tasks-container {
+    display: flex;
+    
   }
 }
