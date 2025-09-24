@@ -10,7 +10,8 @@
 }
 
 body {
-	width: 100%;
+	max-height: 100vh;
+
 	background-color: rgb(248, 248, 248);
 
 	font-family: "Roboto", sans-serif;
@@ -33,9 +34,7 @@ p {
 }
 
 .wrapper {
-	width: inherit;
-	padding-left: 3rem;
-	padding-right: 3rem;
+	padding: 0 2vw;
 }
 
 ul {
@@ -123,8 +122,8 @@ img {
 }
 
 .background-box {
-	width: 32vw;
-	height: 28vw;
+	width: max(300px, 32vw);
+	height: max(28vw);
 
 	position: absolute;
 	z-index: -1;
@@ -148,7 +147,7 @@ main {
 .col-one {
 	display: flex;
 	flex-direction: column;
-	gap: 70px;
+	gap: 3vw;
 }
 
 .col-one .greeting-container {
@@ -252,14 +251,13 @@ main {
 }
 
 .col-two {
-	margin: 0 3vw;
+	margin: 0 2.5vw;
 
 	h2 {
 		margin-bottom: 1.5rem;
 	}
 
 	.tasks-container .task-tile {
-		width: 400px;
 		padding: 1rem 0;
 
 		display: flex;
@@ -275,7 +273,9 @@ main {
 
 .col-three {
 	.form-container {
-		padding: 2rem;
+		justify-self: center;
+
+		padding: 2vw;
 
 		background-color: #fff;
 		box-shadow: 0px 0px 40px 12px rgba(0, 0, 0, 0.1);
@@ -331,6 +331,9 @@ main {
 	.repeat-day-container .days-container {
 		display: flex;
 		gap: 0.5rem;
+		/* flex-wrap: wrap; */
+
+		max-width: max(250px, 27vw);
 
 		overflow-x: auto;
 		overflow-y: hidden;
