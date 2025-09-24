@@ -11,7 +11,7 @@
 			href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
 			rel="stylesheet"
 		/>
-		<script src="script.js"></script>
+		<script defer src="script.js" async></script>
 		<title>TimeMinder</title>
 	</head>
 
@@ -62,7 +62,7 @@
 						</div>
 
 						<div class="percentage-container">
-							<p><span id="task-percentage">99</span><span>%</span></p>
+							<p><span id="task-percentage">0</span><span>%</span></p>
 							<div class="task-count-container">
 								<p class="task-complete">TASK COMPLETED</p>
 								<p>
@@ -98,10 +98,10 @@
 				<section class="col-two">
 					<h2>Today's Task</h2>
 					<div class="tasks-container">
-						<div class="task-tile">
+						<!-- <div class="task-tile">
 							<input type="checkbox" class="check-box" name="Checkbox" />
 							<p class="task-info">Task here</p>
-						</div>
+						</div> -->
 					</div>
 				</section>
 
@@ -193,7 +193,7 @@
 								<input type="date" name="Until" id="date-until" />
 							</label>
 
-							<button type="submit">Create Task</button>
+							<button type="submit" id="submit-btn">Create Task</button>
 						</form>
 					</div>
 				</section>
