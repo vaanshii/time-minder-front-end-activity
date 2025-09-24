@@ -123,7 +123,7 @@ img {
 
 .background-box {
 	width: max(300px, 32vw);
-	height: max(28vw);
+	height: max(200px, 28vw);
 
 	position: absolute;
 	z-index: -1;
@@ -251,7 +251,7 @@ main {
 }
 
 .col-two {
-	margin: 0 2.5vw;
+	margin: 0 2vw;
 
 	h2 {
 		margin-bottom: 1.5rem;
@@ -331,7 +331,6 @@ main {
 	.repeat-day-container .days-container {
 		display: flex;
 		gap: 0.5rem;
-		/* flex-wrap: wrap; */
 
 		max-width: max(250px, 27vw);
 
