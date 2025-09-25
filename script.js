@@ -76,16 +76,32 @@ function TaskTile(isComplete, description, id) {
 	}
 
 	this.tag = "div";
-	this.attributes = { class: `task-tile ${taskDone}`, "data-id": id };
+	this.attributes = { class: `task-tile`, "data-id": id };
 	this.children = [
 		{
-			tag: "input",
-			attributes: checkboxAttributes,
+			tag: "div",
+			attributes: { class: `${taskDone}` },
+			children: [
+				{
+					tag: "input",
+					attributes: checkboxAttributes,
+				},
+				{
+					tag: "p",
+					attributes: { class: "task-info" },
+					text: description,
+				},
+			],
 		},
 		{
-			tag: "p",
-			attributes: { class: "task-info" },
-			text: description,
+			tag: "button",
+			attributes: { type: "button", class: "delete-task-btn" },
+			children: [
+				{
+					tag: "img",
+					attributes: { src: "./assets/icons/delete-icon.svg" },
+				},
+			],
 		},
 	];
 }
@@ -247,6 +263,32 @@ taskContainer.addEventListener("change", (e) => {
 
 			saveTaskToLocal();
 		}
+	}
+});
+
+taskContainer.addEventListener("click", (e) => {
+	const deleteButton = e.target.closest(".delete-task-btn");
+
+	if (deleteButton) {
+		console.log("Delete clicked");
+
+		const taskTile = deleteButton.closest(".task-tile");
+
+		if (!taskTile) return;
+
+		const taskId = taskTile.dataset.id;
+
+		const taskIndex = taskList.findIndex((t) => t.id === taskId);
+
+		if (taskIndex > -1) {
+			taskList.splice(taskIndex, 1);
+		}
+
+		taskTile.remove();
+
+		saveTaskToLocal();
+
+		console.log(`Task ID: ${taskId} successfully deleted.`);
 	}
 });
 
