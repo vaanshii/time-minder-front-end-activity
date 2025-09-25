@@ -1,8 +1,9 @@
-// * temp storage
+const STORAGE_KEY = "taskListData";
+
+// * storage
 const taskList = new Array();
 
 const totalTaskCount = document.querySelector("#total-tasks");
-totalTaskCount.textContent = taskList.length;
 
 // * form input ref
 const form = document.querySelector(".form");
@@ -16,6 +17,8 @@ const dateUntilInput = document.getElementById("date-until");
 
 // * task container ref
 const taskContainer = document.querySelector(".tasks-container");
+
+// * OBJECTS ----------------------------------------------------
 
 // * Object for task data
 class Task {
@@ -59,26 +62,35 @@ class Task {
 
 // * Object for creating element for task
 function TaskTile(isComplete, description, id) {
+	let taskDone = "";
+	const checkboxAttributes = {
+		type: "checkbox",
+		class: "check-box",
+		name: "Checkbox",
+		id: `${id}`,
+	};
+
+	if (isComplete) {
+		checkboxAttributes.checked = true;
+		taskDone = "task-done";
+	}
+
 	this.tag = "div";
-	this.attributes = { class: "task-tile" };
+	this.attributes = { class: `task-tile ${taskDone}`, "data-id": id };
 	this.children = [
 		{
 			tag: "input",
-			attributes: {
-				type: "checkbox",
-				class: "check-box",
-				name: "Checkbox",
-				id: `isComplete-${id}`,
-				checked: isComplete,
-			},
+			attributes: checkboxAttributes,
 		},
 		{
 			tag: "p",
-			attributes: { class: "task-info", class: `${id}` },
+			attributes: { class: "task-info" },
 			text: description,
 		},
 	];
 }
+
+// * FUNCTIONS ----------------------------------------------------
 
 // * for creating dom element
 
@@ -132,14 +144,14 @@ function createTask() {
 
 function addTaskToList(obj) {
 	taskList.push(obj);
+
+	saveTaskToLocal();
 }
 
 function resetInputFields() {
 	dateDeadlineInput.value = null;
 	taskTitleInput.value = null;
 	taskDescriptionInput.value = null;
-	taskTypeInput.value = null;
-	habitLinkInput.value = null;
 	dateUntilInput.value = null;
 
 	let dayChecked = document.querySelectorAll("input[type='checkbox']:checked");
@@ -148,24 +160,95 @@ function resetInputFields() {
 	});
 }
 
+function saveTaskToLocal() {
+	const taskListJSON = JSON.stringify(taskList);
+	localStorage.setItem(STORAGE_KEY, taskListJSON);
+}
+
+function loadTasksFromLocal() {
+	const taskListJSON = localStorage.getItem(STORAGE_KEY);
+
+	if (taskListJSON) {
+		const loadedTasks = JSON.parse(taskListJSON);
+
+		loadedTasks.forEach((taskData) => {
+			const taskInstance = new Task(
+				taskData.deadline,
+				taskData.title,
+				taskData.description,
+				taskData.type,
+				taskData.habitLink,
+				taskData.dayRepeat,
+				taskData.untilDate,
+				taskData.isComplete
+			);
+
+			taskInstance.id = taskData.id;
+			taskList.push(taskInstance);
+
+			totalTaskCount.textContent = taskList.length;
+		});
+	}
+}
+
+function renderTaskTile(task) {
+	const taskTileElement = new TaskTile(
+		task.isComplete,
+		task.description,
+		task.id
+	);
+
+	const listTile = createTileElement(taskTileElement);
+	taskContainer.appendChild(listTile);
+}
+
+function loadAllTask() {
+	taskList.forEach((task) => {
+		renderTaskTile(task);
+	});
+
+	console.log(taskList);
+}
+
 form.addEventListener("submit", (e) => {
 	e.preventDefault();
 	const task = createTask();
 	addTaskToList(task);
 
-	const taskTileElement = new TaskTile(
-		task.isComplete,
-		task.description,
-		task.getId()
-	);
-
-	const listTile = createTileElement(taskTileElement);
-	taskContainer.appendChild(listTile);
-
-	// const isCompletedChecker = document.getElementById(`isComplete-${task.id}`);
-	// isCompletedChecker.checked = task.isComplete;
+	renderTaskTile(task);
 
 	totalTaskCount.textContent = taskList.length.toString();
 
+	console.log(`Succesfully created Task. ID ${task.id}`);
+	console.log(taskList);
+
 	resetInputFields();
 });
+
+taskContainer.addEventListener("change", (e) => {
+	if (e.target.type === "checkbox" && e.target.name == "Checkbox") {
+		const taskTile = e.target.closest(".task-tile");
+		if (!taskTile) return;
+
+		const taskId = taskTile.dataset.id;
+
+		const task = taskList.find((t) => t.getId() === taskId);
+
+		if (task) {
+			task.setIsComplete(e.target.checked);
+
+			console.log(`Task ID: ${taskId} updated to ${task.isComplete}`);
+
+			if (e.target.checked) {
+				taskTile.classList.add("task-done");
+			} else {
+				taskTile.classList.remove("task-done");
+			}
+
+			saveTaskToLocal();
+		}
+	}
+});
+
+loadTasksFromLocal();
+loadAllTask();
