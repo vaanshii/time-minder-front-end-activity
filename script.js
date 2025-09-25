@@ -235,7 +235,7 @@ function updateCompletedTaskCount() {
 		(task) => task.isComplete === true
 	);
 
-	const percent = computePercentage(
+	let percent = computePercentage(
 		completedTasksList.length,
 		taskList.length
 	).toFixed();
@@ -248,8 +248,8 @@ function updateCompletedTaskCount() {
 
 	console.log(percent);
 
-	taskPercentage.textContent = percent;
-	totalTaskCount.textContent = taskList.length;
+	taskPercentage.textContent = percent.toString();
+	totalTaskCount.textContent = taskList.length.toString();
 	completedTask.textContent = completedTasksList.length.toString();
 }
 
