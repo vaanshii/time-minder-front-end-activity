@@ -127,7 +127,7 @@ img {
 
 .background-box {
 	width: clamp(300px, 31vw, 650px);
-	height: clamp(400px, 29vw, 550px);
+	height: clamp(400px, 29vw, 530px);
 
 	position: absolute;
 	z-index: -1;
@@ -151,7 +151,7 @@ main {
 .col-one {
 	display: flex;
 	flex-direction: column;
-	gap: 3vw;
+	gap: clamp(2rem, 3.5vw, 60px);
 }
 
 .col-one .greeting-container {
@@ -199,16 +199,16 @@ main {
 
 	background-color: white;
 
-	padding: clamp(10px, 1.5vw, 100px) 0;
-	padding-left: clamp(10px, 1.5vw, 100px);
-	padding-right: 4vw;
+	width: clamp(150px, 15vw, 300px);
+
+	padding: clamp(10px, 1.5vw, 100px) clamp(10px, 1.5vw, 100px);
 
 	border-radius: 26px;
 	box-shadow: 0px 0px 40px 12px rgba(0, 0, 0, 0.1);
 
 	p:first-child {
 		color: gray;
-		font-size: clamp(12px, 2.5vh, 4rem);
+		font-size: clamp(12px, 2vh, 4rem);
 	}
 
 	p:nth-child(2) {
@@ -238,6 +238,8 @@ main {
 	grid-template-columns: repeat(2, 1fr);
 
 	gap: 1rem;
+
+	width: clamp(300px, 29vw, 700px);
 
 	div {
 		border-radius: 16px;
