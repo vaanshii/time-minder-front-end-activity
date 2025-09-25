@@ -4,6 +4,10 @@ const STORAGE_KEY = "taskListData";
 const taskList = new Array();
 
 const totalTaskCount = document.querySelector("#total-tasks");
+const completedTask = document.querySelector("#completed-task");
+const taskPercentage = document.querySelector("#task-percentage");
+
+const progressFill = document.querySelector(".progress-fill");
 
 // * form input ref
 const form = document.querySelector(".form");
@@ -202,7 +206,7 @@ function loadTasksFromLocal() {
 			taskInstance.id = taskData.id;
 			taskList.push(taskInstance);
 
-			totalTaskCount.textContent = taskList.length;
+			updateCompletedTaskCount();
 		});
 	}
 }
@@ -224,6 +228,33 @@ function loadAllTask() {
 	});
 
 	console.log(taskList);
+}
+
+function updateCompletedTaskCount() {
+	const completedTasksList = taskList.filter(
+		(task) => task.isComplete === true
+	);
+
+	const percent = computePercentage(
+		completedTasksList.length,
+		taskList.length
+	).toFixed();
+
+	if (isNaN(percent)) {
+		percent = 0;
+	}
+
+	progressFill.style.width = `${percent}%`;
+
+	console.log(percent);
+
+	taskPercentage.textContent = percent;
+	totalTaskCount.textContent = taskList.length;
+	completedTask.textContent = completedTasksList.length.toString();
+}
+
+function computePercentage(part, whole) {
+	return (part / whole) * 100;
 }
 
 form.addEventListener("submit", (e) => {
@@ -262,6 +293,7 @@ taskContainer.addEventListener("change", (e) => {
 			}
 
 			saveTaskToLocal();
+			updateCompletedTaskCount();
 		}
 	}
 });
@@ -287,6 +319,8 @@ taskContainer.addEventListener("click", (e) => {
 		taskTile.remove();
 
 		saveTaskToLocal();
+
+		updateCompletedTaskCount();
 
 		console.log(`Task ID: ${taskId} successfully deleted.`);
 	}
