@@ -287,13 +287,39 @@ main {
 		padding: 1rem 0;
 
 		display: flex;
-		gap: 1rem;
+		justify-content: space-between;
 
 		border-bottom: 2px solid rgb(202, 202, 202);
+
+		div {
+			display: flex;
+			gap: 1vw;
+		}
+
+		button {
+			visibility: hidden;
+
+			background-color: rgb(248, 248, 248);
+			border: none;
+
+			cursor: pointer;
+		}
+
+		button img {
+			width: clamp(8px, 1.8vw, 1.8rem);
+		}
 	}
 
-	.tasks-container input[type="checkbox"] {
-		transform: scale(1.8);
+	.tasks-container .task-tile:hover {
+		border-bottom: 2px solid rgb(255, 189, 89);
+
+		button {
+			visibility: visible;
+		}
+	}
+
+	.tasks-container .task-tile input[type="checkbox"] {
+		transform: scale(1.5);
 	}
 }
 
