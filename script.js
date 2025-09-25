@@ -66,7 +66,7 @@ class Task {
 
 // * Object for creating element for task
 function TaskTile(isComplete, description, id) {
-	let taskDone = "";
+	let taskDoneClass = "";
 	const checkboxAttributes = {
 		type: "checkbox",
 		class: "check-box",
@@ -76,7 +76,7 @@ function TaskTile(isComplete, description, id) {
 
 	if (isComplete) {
 		checkboxAttributes.checked = true;
-		taskDone = "task-done";
+		taskDoneClass = "task-done";
 	}
 
 	this.tag = "div";
@@ -84,7 +84,7 @@ function TaskTile(isComplete, description, id) {
 	this.children = [
 		{
 			tag: "div",
-			attributes: { class: `${taskDone}` },
+			attributes: { class: `${taskDoneClass}` },
 			children: [
 				{
 					tag: "input",
@@ -222,12 +222,14 @@ function renderTaskTile(task) {
 	taskContainer.appendChild(listTile);
 }
 
-function loadAllTask() {
+function renderAllTask() {
+	taskContainer.innerHTML = "";
+
 	taskList.forEach((task) => {
 		renderTaskTile(task);
 	});
 
-	console.log(taskList);
+	updateCompletedTaskCount();
 }
 
 function updateCompletedTaskCount() {
@@ -262,14 +264,13 @@ form.addEventListener("submit", (e) => {
 	const task = createTask();
 	addTaskToList(task);
 
-	renderTaskTile(task);
-
-	totalTaskCount.textContent = taskList.length.toString();
+	renderAllTask();
 
 	console.log(`Succesfully created Task. ID ${task.id}`);
-	console.log(taskList);
 
 	resetInputFields();
+
+	updateCompletedTaskCount();
 });
 
 taskContainer.addEventListener("change", (e) => {
@@ -327,4 +328,4 @@ taskContainer.addEventListener("click", (e) => {
 });
 
 loadTasksFromLocal();
-loadAllTask();
+renderAllTask();
