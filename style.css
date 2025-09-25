@@ -123,7 +123,7 @@ img {
 
 .background-box {
 	width: max(300px, 32vw);
-	height: clamp(100px, 32vw, 500px);
+	height: clamp(400px, 27vw, 550px);
 
 	position: absolute;
 	z-index: -1;
