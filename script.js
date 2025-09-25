@@ -1,6 +1,9 @@
 // * temp storage
 const taskList = new Array();
 
+const totalTaskCount = document.querySelector("#total-tasks");
+totalTaskCount.textContent = taskList.length;
+
 // * form input ref
 const form = document.querySelector(".form");
 const dateDeadlineInput = document.getElementById("date-deadline");
@@ -24,8 +27,7 @@ class Task {
 		habitLink,
 		dayRepeat,
 		untilDate,
-		isComplete = false,
-		id
+		isComplete = false
 	) {
 		this.deadline = deadline;
 		this.title = title;
@@ -72,7 +74,7 @@ function TaskTile(isComplete, description, id) {
 		},
 		{
 			tag: "p",
-			attributes: { class: "task-info" },
+			attributes: { class: "task-info", class: `${id}` },
 			text: description,
 		},
 	];
@@ -160,8 +162,10 @@ form.addEventListener("submit", (e) => {
 	const listTile = createTileElement(taskTileElement);
 	taskContainer.appendChild(listTile);
 
-	const isCompletedChecker = document.getElementById(`isComplete-${task.id}`);
-	isCompletedChecker.checked = task.isComplete;
+	// const isCompletedChecker = document.getElementById(`isComplete-${task.id}`);
+	// isCompletedChecker.checked = task.isComplete;
+
+	totalTaskCount.textContent = taskList.length.toString();
 
 	resetInputFields();
 });
