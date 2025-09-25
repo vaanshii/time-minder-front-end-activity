@@ -26,7 +26,7 @@ h2 {
 }
 
 h3 {
-	font-size: clamp(0.3rem, 0.4vw + 1rem, 1rem);
+	font-size: clamp(12px, 0.4vw + 1rem, 2rem);
 }
 
 p {
@@ -101,7 +101,7 @@ img {
 
 .nav-items li img,
 .profile-container img {
-	width: 2vw;
+	width: clamp(14px, 2vw, 2rem);
 	filter: var(--primary-icon-color-filter);
 }
 
@@ -154,7 +154,7 @@ main {
 	display: flex;
 	gap: 1rem;
 
-	width: min(300px, 40vw);
+	max-width: clamp(14px, 20vw, 600px);
 
 	img {
 		filter: var(--secondary-color-filter);
@@ -255,6 +255,11 @@ main {
 
 	h2 {
 		margin-bottom: 1.5rem;
+	}
+
+	.tasks-container {
+		display: flex;
+		flex-direction: column-reverse;
 	}
 
 	.tasks-container .task-tile {
@@ -381,4 +386,9 @@ main {
 
 		font-weight: 500;
 	}
+}
+
+.task-done {
+	text-decoration: line-through;
+	color: rgba(197, 129, 0.421);
 }
