@@ -272,7 +272,7 @@ main {
 }
 
 .col-two {
-	margin: 0 2vw;
+	margin: 0 clamp(1rem, 1.5vw, 5rem);
 
 	h2 {
 		margin-bottom: 1.5rem;
@@ -285,7 +285,7 @@ main {
 	}
 
 	.tasks-container .task-tile {
-		padding: 1rem 0;
+		padding: 1rem clamp(5px, 1vw, 2rem);
 
 		display: flex;
 		justify-content: space-between;
